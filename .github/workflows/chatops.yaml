@@ -21,10 +21,11 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             console.log(context.payload.issue.number)           
-            github.pulls.get({
+            var pr = github.pulls.get({
               owner: context.repo.owner,
               repo: context.repo.repo,
               pull_number: context.payload.issue.number
             });
+            console.log(pr)
         env:
           PR_NUM: ${{ github.event.pull_request.head.ref }}
