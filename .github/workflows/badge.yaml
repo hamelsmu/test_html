@@ -5,7 +5,13 @@ jobs:
   binder:
     runs-on: ubuntu-latest
     steps:
-        
+       
+    - name: see payload
+      run: |
+        echo "${PAYLOAD}"
+      env:
+        PAYLOAD: ${{ toJSON(github.event) }}
+          
     - name: comment on PR with Binder link
       uses: actions/github-script@v1
       with:
