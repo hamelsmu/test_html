@@ -13,7 +13,6 @@ jobs:
           echo "PR_PAYLOAD PAYLOAD:\n${PR_PAYLOAD}"
         env:
           PAYLOAD: ${{ toJSON(github.event.issue.number) }}
-          PR_PAYLOAD: ${{ github.event.pull_request }}
           
 
       - name: comment on PR with Binder link
@@ -22,6 +21,6 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             var PR_NUM = process.env.PR_NUM;
-            console.log(context.issue.pull_request)
+            console.log(context.issue)
         env:
           PR_NUM: ${{ github.event.pull_request.head.ref }}
