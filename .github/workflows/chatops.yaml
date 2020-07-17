@@ -20,12 +20,11 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            var PR_NUM = process.env.PR_NUM;            
-            var pr = github.pulls.getReview({
+            console.log(context.payload.issue.number)           
+            github.pulls.getReview({
               owner: context.repo.owner,
               repo: context.repo.repo,
               pull_number: context.payload.issue.number
             });
-            console.log(pr);
         env:
           PR_NUM: ${{ github.event.pull_request.head.ref }}
