@@ -11,7 +11,7 @@ jobs:
         run: |
           echo "${PAYLOAD}"
         env:
-          PAYLOAD: ${{ toJSON(github.event.issue.number) }}
+          PAYLOAD: ${{ toJSON(github.event.issue) }}
           
 
       - name: comment on PR with Binder link
