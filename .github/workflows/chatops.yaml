@@ -24,6 +24,5 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               pull_number: context.payload.issue.number
-            }).then( (val) => console.log(val.head.ref))
-        env:
-          PR_NUM: ${{ github.event.pull_request.data.head.ref }}
+            }).then( (val) => console.log(val.data.head.ref))
+
