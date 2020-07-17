@@ -9,8 +9,7 @@ jobs:
           
       - name: see payload
         run: |
-          echo "FULL PAYLOAD:\n${PAYLOAD}\n"
-          echo "PR_PAYLOAD PAYLOAD:\n${PR_PAYLOAD}"
+          echo "${PAYLOAD}"
         env:
           PAYLOAD: ${{ toJSON(github.event.issue.number) }}
           
@@ -21,11 +20,10 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             console.log(context.payload.issue.number)           
-            var pr = github.pulls.get({
+            github.pulls.get({
               owner: context.repo.owner,
               repo: context.repo.repo,
               pull_number: context.payload.issue.number
-            });
-            console.log(pr)
+            }).then( (val) => console.log(val))
         env:
           PR_NUM: ${{ github.event.pull_request.head.ref }}
