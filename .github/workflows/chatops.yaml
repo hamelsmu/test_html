@@ -24,10 +24,8 @@ jobs:
             var pr = github.pulls.getReview({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              pull_number: `${PR_NUM}`,
+              pull_number: context.payload.issue.number
             });
             console.log(pr);
-            console.log('========sep========')
-            console.log(context)
         env:
           PR_NUM: ${{ github.event.pull_request.head.ref }}
