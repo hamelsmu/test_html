@@ -12,6 +12,6 @@ jobs:
           echo "FULL PAYLOAD:\n${PAYLOAD}\n"
           echo "PR_PAYLOAD PAYLOAD:\n${PR_PAYLOAD}"
         env:
-          PAYLOAD: ${{ toJSON(github.event.comment.html_url) }}
+          PAYLOAD: ${{ toJSON(github.event.issue.number) }}
           PR_PAYLOAD: ${{ github.event.pull_request }}
           
