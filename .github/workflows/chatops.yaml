@@ -21,6 +21,6 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             var PR_NUM = process.env.PR_NUM;
-            console.log(context)
+            console.log(context.payload.issue.pull_request)
         env:
           PR_NUM: ${{ github.event.pull_request.head.ref }}
