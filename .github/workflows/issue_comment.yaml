@@ -1,5 +1,4 @@
-
-name: pull request payload
+name: issue comment payload
 on:
   issue_comment
   
