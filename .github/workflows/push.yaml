@@ -13,6 +13,12 @@ jobs:
       env:
         PAYLOAD: ${{ toJSON(github.event) }}
 
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: payload.json
+        path: ${{ github.event_path }}
+
     - name: Setup tmate session
       uses: mxschmitt/action-tmate@v2
       
