@@ -1,0 +1,21 @@
+
+name: pull request payload
+on:
+  issue_comment
+  
+jobs:
+  binder:
+    runs-on: ubuntu-latest
+    steps:
+       
+    - name: see payload
+      run: |
+        echo "${PAYLOAD}"
+      env:
+        PAYLOAD: ${{ toJSON(github.event) }}
+
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: payload.json
+        path: ${{ github.event_path }}
