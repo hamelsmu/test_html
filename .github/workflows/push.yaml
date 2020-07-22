@@ -1,4 +1,4 @@
-name: see payload
+name: pull request payload
 on:
   pull_request
   
