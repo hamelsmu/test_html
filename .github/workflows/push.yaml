@@ -12,3 +12,7 @@ jobs:
         echo "${PAYLOAD}"
       env:
         PAYLOAD: ${{ toJSON(github.event) }}
+
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v2
+      
