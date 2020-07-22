@@ -3,7 +3,6 @@ on: [issue_comment]
 
 jobs:
   trigger-chatops:
-    if: (github.event.issue.pull_request != null) &&  contains(github.event.comment.body, '/preview')
     runs-on: ubuntu-latest
     steps:
           
