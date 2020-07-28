@@ -20,6 +20,6 @@ jobs:
         git config --global user.name "github-actions[bot]"
         touch something.txt
         git add -A
-        git commit --allow-empty -m'update docs'
-        git push origin HEAD:$GITHUB_REF
+        git commit --allow-empty -m'[bot] update docs'
+        git push -f
       
