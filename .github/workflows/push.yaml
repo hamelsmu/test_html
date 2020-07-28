@@ -13,6 +13,8 @@ jobs:
       env:
         PAYLOAD: ${{ toJSON(github.event) }}
     - uses: actions/checkout@v2
+      with:
+        ref: 'hamelsmu-patch-5'
     - name: debug
       uses: mxschmitt/action-tmate@v2
     - name: Commit back to GitHub
