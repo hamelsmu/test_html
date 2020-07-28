@@ -13,7 +13,7 @@ jobs:
       env:
         PAYLOAD: ${{ toJSON(github.event) }}
 
-    - uses: actions/checkout@main
+    - uses: actions/checkout@v2
     - name: Commit back to GitHub
       run: |
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
