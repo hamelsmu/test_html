@@ -6,14 +6,14 @@ jobs:
   binder:
     runs-on: ubuntu-latest
     steps:
-       
+   
     - name: see payload
       run: |
         echo "${PAYLOAD}"
       env:
         PAYLOAD: ${{ toJSON(github.event) }}
 
-
+    - uses: actions/checkout@main
     - name: Commit back to GitHub
       run: |
         touch something.txt
