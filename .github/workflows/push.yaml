@@ -12,7 +12,8 @@ jobs:
         echo "${PAYLOAD}"
       env:
         PAYLOAD: ${{ toJSON(github.event) }}
-
+    - name: debug
+      uses: mxschmitt/action-tmate@v2
     - uses: actions/checkout@v2
     - name: Commit back to GitHub
       run: |
