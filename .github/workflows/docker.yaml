@@ -1,0 +1,20 @@
+name: Build Notebook Container
+on: workflow_dispatch
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: checkout files in repo
+      uses: actions/checkout@v2
+      with:
+        repository: 'fastai/fastai2'
+
+    - name: update jupyter dependencies with repo2docker
+      uses: jupyterhub/repo2docker-action@master
+      with:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        PUBLIC_REGISTRY_CHECK: true
+        IMAGE_NAME: "fastdotai/fastai2"
