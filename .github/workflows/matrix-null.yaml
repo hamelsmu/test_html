@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        var: [true, false]
+        var: [true, false, '']
         
     steps:
       - name: emit values
