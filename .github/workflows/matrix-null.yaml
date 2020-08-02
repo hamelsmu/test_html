@@ -1,0 +1,16 @@
+name: Test
+on: push
+
+jobs:    
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        var: [true, false]
+        
+      steps:
+      
+      - name: emit values
+        run: echo "The value: $VALUE"
+        env:
+          VALUE: ${{ matrix.var }}
