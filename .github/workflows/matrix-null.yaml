@@ -7,9 +7,15 @@ jobs:
     strategy:
       matrix:
         var: ['true', 'false', '']
+        include:
+          - var: 'true'
+            var2: 'only when the other is true'
         
     steps:
       - name: emit values
-        run: echo "The value:$VALUE"
+        run: |
+          echo "The value:$VALUE"
+          echo "The second value: $VALUE2"
         env:
           VALUE: ${{ matrix.var }}
+          VALUE2: ${{ matrix.var2 }}
