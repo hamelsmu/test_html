@@ -8,9 +8,8 @@ jobs:
       matrix:
         var: [true, false]
         
-      steps:
-      
+    steps:
       - name: emit values
-        run: echo "The value: $VALUE"
+        run: echo "The value:$VALUE"
         env:
           VALUE: ${{ matrix.var }}
