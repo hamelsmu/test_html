@@ -1,0 +1,27 @@
+name: CI
+on: [pull_request_target]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: see payload
+      run: echo "$PAYLOAD"
+      env:
+        PAYLOAD: ${{ toJSON(github.event) }}
+
+    - name: comment on PR
+      uses: actions/github-script@v2
+      with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+          var run_id = process.env.RUN_ID;
+          var user = context.payload.pull_request.user.login;
+          github.issues.createComment({
+            issue_number: context.payload.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: `👋 @${user}! We detected notebooks that were not stripped or that were out of sync with the library in this PR.  We have applied these changes automatically on top of your PR for you.  You will have to pull these changes locally to avoid conflicts.\nRemember to run \`nbdev_install_git_hooks\` before submitting a pull request! For more information, see the [CONTRIBUTING](https://github.com/fastai/fastai2#contributing) guide.\n You can see the logs of the tests that triggered this message in run [${run_id}](https://github.com/fastai/fastai2/actions/runs/${run_id}).`
+          })
+      env:
+        RUN_ID: ${{ github.run_id }}
