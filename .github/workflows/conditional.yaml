@@ -15,4 +15,4 @@ jobs:
           
       - name: Step2
         run: echo "Wooo!"
-        if: always() && 1 == 1
+        if: always() && 1 == 2
