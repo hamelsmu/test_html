@@ -7,12 +7,12 @@ jobs:
 
     steps:
     
-      - name: Build app
+      - name: Step1
         id: build
         run: |
-          echo ::set-output name=exit_code::$?
+          echo "::set-output name=exit_code::1"
           exit 1;
           
-      - name: Create artifact of test coverage
-        run: "echo Wooo!"
-        if: always()
+      - name: Step2
+        run: echo "Wooo!"
+        if: steps.build.outputs.exit_code == 1
