@@ -15,4 +15,4 @@ jobs:
           
       - name: Create artifact of test coverage
         run: "echo Wooo!"
-        if: steps.build.outputs.exit_code == 1
+        if: always()
