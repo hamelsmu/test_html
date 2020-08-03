@@ -15,4 +15,4 @@ jobs:
           
       - name: Step2
         run: echo "Wooo!"
-        if: steps.build.outputs.exit_code == 1
+        if: 1 == 1
