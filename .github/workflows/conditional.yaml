@@ -1,0 +1,18 @@
+name: condition
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    
+      - name: Build app
+        id: build
+        run: |
+          exit 1;
+          echo ::set-output name=exit_code::$?
+          
+      - name: Create artifact of test coverage
+        run: "echo Wooo!"
+        if: steps.build.outputs.exit_code == 1
