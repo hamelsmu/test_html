@@ -1,0 +1,14 @@
+name: CI
+on: push
+  
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: 
+      image: fastdotai/torch-test
+      options: "--user=root"
+    env:
+      auto_fix: false  
+    steps:
+    - name: see user
+      run: whoami
