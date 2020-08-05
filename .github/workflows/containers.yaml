@@ -1,11 +1,11 @@
-name: CI
+name: Container Options
 on: push
   
 jobs:
   test:
     runs-on: ubuntu-latest
     container: 
-      image: fastdotai/torch-test
+      image: fastdotai/fastai2
       options: "--user=root"
     env:
       auto_fix: false  
