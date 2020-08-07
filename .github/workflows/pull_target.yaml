@@ -1,0 +1,16 @@
+name: CI
+on: 
+  workflow_dispatch: #allows repo admins to trigger this workflow from the Actions tab
+  pull_request_target:
+  
+ jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: checkout contents of PR
+      uses: actions/checkout@v2
+    
+    - name: see files
+      run: ls
+ 
