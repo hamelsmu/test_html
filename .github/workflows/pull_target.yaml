@@ -12,10 +12,12 @@ jobs:
       run: |
         echo "${PAYLOAD}"
       env:
-        PAYLOAD: ${{ toJSON(github.event) }}
+        PAYLOAD: ${{ toJSON(github.event.head.ref) }}
 
     - name: checkout contents of PR
       uses: actions/checkout@v2
+      with:
+        ref: ${{github.event.head.ref}}
     
     - name: see files
       run: ls
