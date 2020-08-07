@@ -1,9 +1,9 @@
-name: CI
+name: Pull-Request-Target
 on: 
   workflow_dispatch: #allows repo admins to trigger this workflow from the Actions tab
   pull_request_target:
   
- jobs:
+jobs:
   test:
     runs-on: ubuntu-latest
     steps:
